@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS odontologo(
+id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ nombre VARCHAR(40) NOT NULL,
+  apellido VARCHAR(40) NOT NULL,
+   numero_matricula INT NOT NULL
+   );
+
+ CREATE TABLE IF NOT EXISTS domicilio(
+   id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+   calle VARCHAR(30) NOT NULL,
+   numero VARCHAR(8) NOT NULL,
+   localidad VARCHAR(25) NOT NULL,
+   provincia VARCHAR(25) NOT NULL
+   );
+
+ CREATE TABLE IF NOT EXISTS paciente(
+   id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+   nombre VARCHAR(25) NOT NULL,
+   apellido VARCHAR(20) NOT NULL,
+   dni VARCHAR(10) NOT NULL,
+   fecha_ingreso DATE NOT NULL,
+   domicilio_id INT NOT NULL,
+   FOREIGN KEY (domicilio_id) REFERENCES domicilio(id)
+   );

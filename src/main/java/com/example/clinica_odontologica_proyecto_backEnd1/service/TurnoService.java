@@ -2,6 +2,8 @@ package com.example.clinica_odontologica_proyecto_backEnd1.service;
 
 import com.example.clinica_odontologica_proyecto_backEnd1.model.Turno;
 import com.example.clinica_odontologica_proyecto_backEnd1.repository.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -10,11 +12,11 @@ import java.util.List;
 @Service
 
 public class TurnoService {
+
+    @Autowired
+    @Qualifier("TurnoIDaoH2")
     private IDao<Turno> turnoIDao;
 
-    public TurnoService(IDao<Turno> turnoIDao){
-        this.turnoIDao=turnoIDao;
-    }
 
     public Turno guardarTurno(Turno turno) throws SQLException {
        Turno turno1 = this.turnoIDao.crear(turno);

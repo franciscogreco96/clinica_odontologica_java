@@ -7,6 +7,7 @@ import com.example.clinica_odontologica_proyecto_backEnd1.repository.impl.TurnoL
 import com.example.clinica_odontologica_proyecto_backEnd1.service.OdontologoService;
 import com.example.clinica_odontologica_proyecto_backEnd1.service.PacienteService;
 import com.example.clinica_odontologica_proyecto_backEnd1.service.TurnoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,12 @@ import java.util.List;
 
 @RequestMapping("/turnos")
 public class TurnoController {
-    private TurnoService turnoService = new TurnoService(new TurnoListRepository());
-    private PacienteService pacienteService = new PacienteService(new PacienteDaoH2());
-    private OdontologoService odontologoService = new OdontologoService(new OdontologoDaoH2());
+    @Autowired
+    private TurnoService turnoService;
+    @Autowired
+    private PacienteService pacienteService ;
+    @Autowired
+    private OdontologoService odontologoService;
 
     @PostMapping("/registrar")
     public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno) throws SQLException {

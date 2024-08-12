@@ -3,6 +3,7 @@ package com.example.clinica_odontologica_proyecto_backEnd1.controller;
 import com.example.clinica_odontologica_proyecto_backEnd1.model.Paciente;
 import com.example.clinica_odontologica_proyecto_backEnd1.repository.impl.PacienteDaoH2;
 import com.example.clinica_odontologica_proyecto_backEnd1.service.PacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,8 @@ import java.sql.SQLException;
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
-    private static PacienteService pacienteService = new PacienteService(new PacienteDaoH2());
+    @Autowired
+    private  PacienteService pacienteService ;
     @PostMapping("/registrar")
     public ResponseEntity crearPaciente(@RequestBody Paciente paciente) throws SQLException {
         ResponseEntity response = null;

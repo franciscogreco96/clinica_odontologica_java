@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Repository("OdontologoDaoH2")
 
 public class OdontologoDaoH2 implements IDao<Odontologo> {
     // ---------------------- sobreescribo todos los metodos de la interfaz IDao para ejecutarlos de manera personalizada para odontologos--------

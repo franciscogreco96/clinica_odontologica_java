@@ -4,6 +4,8 @@ package com.example.clinica_odontologica_proyecto_backEnd1.service;
 
 import com.example.clinica_odontologica_proyecto_backEnd1.model.Odontologo;
 import com.example.clinica_odontologica_proyecto_backEnd1.repository.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -14,16 +16,14 @@ import java.util.List;
 public class OdontologoService {
 
     // ------------------- atributos odontologoService (solo usa la IDao para setear que tipo de subclase dao usar)-------
-
+@Autowired
+@Qualifier("OdontologoDaoH2")
     private IDao<Odontologo> odontologoIDao;
 
     //-----------------------constructor odontologoService ----------------------
-    public OdontologoService() {
-    }
 
-    public OdontologoService(IDao<Odontologo> odontologoIDao) {
-        this.odontologoIDao = odontologoIDao;
-    }
+
+
 
     // ----------------------------- getters y setters odontologoSerice -------------------
 

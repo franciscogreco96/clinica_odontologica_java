@@ -8,6 +8,8 @@ import com.example.clinica_odontologica_proyecto_backEnd1.repository.configuraci
 import com.example.clinica_odontologica_proyecto_backEnd1.util.Util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 
@@ -15,12 +17,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Repository("PacienteDaoH2")
 
 public class PacienteDaoH2 implements IDao<Paciente> {
     private static final Logger logger = LogManager.getLogger(PacienteDaoH2.class);
     private ConfiguracionJDBC configuracionJDBC;
-    private DomicilioDaoH2 domicilioDaoH2 = new DomicilioDaoH2();
+    @Autowired
+    @Qualifier("DomicilioDaoH2")
+    private IDao<Domicilio> domicilioDaoH2;
 
     public PacienteDaoH2() {
         this.configuracionJDBC=new ConfiguracionJDBC();

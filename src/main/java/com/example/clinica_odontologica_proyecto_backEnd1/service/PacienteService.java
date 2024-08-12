@@ -3,6 +3,8 @@ package com.example.clinica_odontologica_proyecto_backEnd1.service;
 
 import com.example.clinica_odontologica_proyecto_backEnd1.model.Paciente;
 import com.example.clinica_odontologica_proyecto_backEnd1.repository.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -11,14 +13,9 @@ import java.util.List;
 @Service
 
 public class PacienteService {
+    @Autowired
+    @Qualifier("PacienteDaoH2")
     private IDao<Paciente> pacienteIDao;
-
-    public PacienteService() {
-    }
-
-    public PacienteService(IDao<Paciente> pacienteIDao)  {
-        this.pacienteIDao = pacienteIDao;
-    }
 
     public IDao<Paciente> getPacienteIDao() {
         return pacienteIDao;

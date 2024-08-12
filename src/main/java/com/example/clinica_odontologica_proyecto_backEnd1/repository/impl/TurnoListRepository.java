@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-@Repository
+@Repository("TurnoIDaoH2")
 
 public class TurnoListRepository implements IDao<Turno> {
     private List<Turno> turnos;
@@ -25,12 +26,17 @@ public class TurnoListRepository implements IDao<Turno> {
 
     @Override
     public void eliminar(Integer id) throws SQLException {
-        for (Turno turno : turnos){
-            if (turno.getId() == id){
-                turnos.remove(turno);
+        Iterator<Turno> iterator = turnos.iterator();
+        while (iterator.hasNext()) {
+            Turno turno = iterator.next();
+            if ( turno.getId() == id) {
+                iterator.remove();
             }
         }
     }
+
+
+
 
     @Override
     public Turno buscar(Integer id) throws SQLException {

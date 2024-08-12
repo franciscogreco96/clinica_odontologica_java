@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Repository("DomicilioDaoH2")
 public class DomicilioDaoH2 implements IDao<Domicilio> {
 
     private ConfiguracionJDBC configuracionJDBC;

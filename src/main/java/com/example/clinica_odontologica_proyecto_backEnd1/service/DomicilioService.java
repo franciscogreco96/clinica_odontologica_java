@@ -2,6 +2,8 @@ package com.example.clinica_odontologica_proyecto_backEnd1.service;
 
 import com.example.clinica_odontologica_proyecto_backEnd1.model.Domicilio;
 import com.example.clinica_odontologica_proyecto_backEnd1.repository.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -10,15 +12,9 @@ import java.util.List;
 @Service
 
 public class DomicilioService {
+    @Autowired
+    @Qualifier("DomicilioDaoH2")
     private IDao<Domicilio> domicilioIDao;
-
-    public DomicilioService(IDao<Domicilio> domicilioIDao){
-        this.domicilioIDao=domicilioIDao;
-    }
-
-    public IDao<Domicilio> getDomicilioIDao() {
-        return domicilioIDao;
-    }
 
     public void setDomicilioIDao(IDao<Domicilio> domicilioIDao) {
         this.domicilioIDao = domicilioIDao;
